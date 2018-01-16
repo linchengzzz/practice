@@ -23,7 +23,7 @@ var Paddle = function () {
     obj.collide = function (ball) {
         
         if (ball.y + ball.image.height > obj.y) {
-            console.log("p")
+            // console.log("p")
             
             if (ball.x > obj.x && ball.x < obj.x + obj.image.width) {
                 return true;
@@ -47,18 +47,25 @@ var Ball = function () {
     }
     obj.launch = function () {
         obj.launched = true;
-    }
-    obj.move = function (game) {
+    }   
+    obj.move = function (game,paddle) {
         if (obj.launched) {
             //console.log("move");
             if (obj.x < 0 || obj.x > game.canvas.width) {
                 obj.speedX = -obj.speedX;
             }
-            if (obj.y < 0 || obj.y > game.canvas.height) {
+            /**TODO:
+             * 修改 gameover 判定
+             */
+            if (obj.y < 0|| obj.y > game.canvas.height) {
                 obj.speedY = -obj.speedY;
             }
             obj.x += obj.speedX;
             obj.y += obj.speedY;
+            // if (obj.y>paddle.y) {
+            //     console.log("gameover");
+            //     return
+            // }
         }
     }
 
@@ -131,7 +138,7 @@ var main = function () {
         ball.launch();
     })
     game.update = function () {
-        ball.move(game);
+        ball.move(game,paddle);
         if (paddle.collide(ball)) {
             ball.speedY = -ball.speedY
         }
