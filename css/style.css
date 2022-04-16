@@ -1,8 +1,27 @@
-.header{
-    width: 100px;
-    height: 100px;
-    background-color: #fff;
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
 }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 25px 0;
+}
+
+.rating {
+  width: 200px;
+  height: 600px;
+  border: 1px solid #000;
+}
+
 canvas {
-    border: 1px solid #000;
+  border: 1px solid #000;
 }
